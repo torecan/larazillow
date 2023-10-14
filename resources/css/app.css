@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .label {
+        @apply block text-gray-500
+    }
+
+    .input {
+        @apply block w-full rounded-md shadow-sm border border-gray-300
+    }
+
+    .button {
+       @apply bg-indigo-600 hover:bg-indigo-500 text-white font-medium p-2 rounded-md
+    }
+    .error {
+        @apply text-red-600
+    }
+
+    .input-filter-l {
+        @apply placeholder:text-gray-400 border border-gray-200 rounded-t-md rounded-l-md rounded-b-md rounded-r-none text-sm font-medium text-gray-600
+    }
+
+    .input-filter-r {
+        @apply placeholder:text-gray-400 border border-gray-200 rounded-t-md rounded-r-md rounded-b-md rounded-l-none text-sm font-medium text-gray-600
+    }
+
+    .btn-normal {
+        @apply bg-gray-600 hover:bg-gray-500 text-white font-medium p-2 rounded-md
+    }
+
+    .btn-primary {
+        @apply bg-indigo-600 hover:bg-indigo-500 text-white font-medium p-2 rounded-md
+    }
+
+    .btn-outline {
+        @apply border-gray-300 p-2 rounded-md border shadow-sm hover:border-gray-400 hover:bg-gray-50
+    }
+
+}
