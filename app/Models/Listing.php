@@ -16,6 +16,10 @@ class Listing extends Model
       'beds', 'baths', 'price', 'area', 'street', 'code','street_nr', 'city'
     ];
 
+    protected $sortable = [
+        'price', 'created_at'
+    ];
+
     public function owner() :BelongsTo {
 
         return $this->belongsTo(
@@ -54,8 +58,17 @@ class Listing extends Model
         ->when(
             $filters['areaTo'] ?? false,
             fn($query, $value) => $query->where('area', '<=', $value)
+        )
+        ->when(
+            $filters['deleted'] ?? false,
+            fn ($query) => $query->onlyTrashed()
+        )
+        ->when(
+            $filters['by'] ?? false,
+            fn($query, $value) =>
+                !in_array($filters['by'], $this->sortable) ?
+                    $query :
+                    $query->orderBy($value, $filters['order'] ?? 'desc')
         );
-
     }
-
 }
