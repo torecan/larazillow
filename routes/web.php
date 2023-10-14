@@ -43,5 +43,3 @@ Route::prefix('realtor')
         ->only(['index', 'destroy']);
     });
 
-
-git -C . git@github.com:torecan/larazillow.git
