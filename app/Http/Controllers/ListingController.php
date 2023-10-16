@@ -42,51 +42,6 @@ class ListingController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return inertia('Listing/Create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-
-        $request->user()->listings()->create(
-            $request->validate([
-                    'beds' => 'required|integer | min:0 | max:20',
-                    'baths' => 'required|integer | min:0 | max:20',
-                    'area' => 'required|integer | min:10 | max:300',
-                    'code' => 'required',
-                    'city' => 'required',
-                    'street' => 'required',
-                    'street_nr' => 'required',
-                    'price' => 'required|integer|min:1|max:20000000'
-                ]
-            )
-        );
-
-        return redirect()->route('listing.index')
-            ->with('success', 'Listing was created!');
-
-//        $list = new Listing();
-//
-//        $list->beds = $request->beds;
-//        $list->area = $request->beds;
-//        $list->baths = $request->beds;
-//        $list->price = $request->price;
-//        $list->code = $request->code;
-//        $list->street = $request->beds;
-//        $list->street_nr = $request->beds;
-//        $list->city = $request->city;
-//
-//        $list->save();
-    }
-
-    /**
      * Display the specified resource.
      */
     public function show(Listing $listing)
@@ -104,41 +59,6 @@ class ListingController extends Controller
                 'listing' => $listing
             ]
         );
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Listing $listing)
-    {
-        return inertia(
-            'Listing/Edit', [
-                'listing' => $listing
-            ]
-        );
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Listing $listing)
-    {
-        $listing->update(
-            $request->validate([
-                    'beds' => 'required|integer | min:0 | max:20',
-                    'baths' => 'required|integer | min:0 | max:20',
-                    'area' => 'required|integer | min:10 | max:300',
-                    'code' => 'required',
-                    'city' => 'required',
-                    'street' => 'required',
-                    'street_nr' => 'required',
-                    'price' => 'required|integer|min:1|max:20000000'
-                ]
-            )
-        );
-
-        return redirect()->route('listing.index')
-            ->with('success', 'Listing was updated!');
     }
 
 }
