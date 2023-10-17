@@ -38,7 +38,6 @@ Route::get('login', [AuthController::class, 'create'])->name('login');
 Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 
-
 Route::prefix('realtor')
     ->name('realtor.')
     ->middleware('auth')
@@ -52,7 +51,7 @@ Route::prefix('realtor')
             ->only(['index', 'destroy', 'edit', 'update', 'create', 'store']);
 
         Route::resource('listing.image', RealtorListingImageController::class)
-            ->only(['create', 'store']);
+            ->only(['create', 'store', 'destroy']);
 
     });
 
