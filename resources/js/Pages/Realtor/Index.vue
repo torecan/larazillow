@@ -46,7 +46,12 @@
                     </div>
 
                     <div class="mt-2">
-                        <Link :href="route('realtor.listing.image.create', { listing: listing.id })" class="block w-full btn-outline text-xs font-medium text-center">Images</Link>
+                        <Link
+                            :href="route('realtor.listing.image.create', { listing: listing.id })"
+                            class="block w-full btn-outline text-xs font-medium text-center"
+                        >
+                            Images ({{ listing.images_count }})
+                        </Link>
                     </div>
                 </section>
             </div>
@@ -67,6 +72,7 @@ import Box from '@/Components/UI/Box.vue';
 import {Link} from "@inertiajs/vue3";
 import RealtorFilters from "./Components/RealtorFilters.vue";
 import Pagination from "@/Components/UI/Pagination.vue";
+import {list} from "postcss";
 
 defineProps({
     listings: Object,

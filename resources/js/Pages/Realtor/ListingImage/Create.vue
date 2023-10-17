@@ -11,14 +11,27 @@
                 <button type="submit" class="btn-outline disabled:opacity-25" :disabled="!canUpload" >Upload</button>
                 <button type="reset" class="btn-outline" @click="reset">Reset</button>
             </section>
+            <div v-if="uploadErrors.length">
+                <div v-for="(error, index) in uploadErrors" class="error" :key="index"> {{ error }} </div>
+            </div>
         </form>
     </Box>
 
-    <Box v-if="listing.images.length">
+    <Box v-if="listing.images.length" class="mt-4">
         <template #header>Current Images</template>
         <section class="mt-4 grid grid-cols-3 gap-2">
             <div v-for="image in listing.images">
-                <img :src="image.src" class="rounded-md">
+                <div class="flex flex-col justify-between gap-2">
+                    <img :src="image.src" class="rounded-md">
+                    <Link :href="route('realtor.listing.image.destroy', {
+                        listing: props.listing.id,
+                        image: image.id
+                    })"
+                    class="btn-outline text-xs"
+                    as="button"
+                    method="delete"
+                    >Delete</Link>
+                </div>
             </div>
         </section>
     </Box>
@@ -30,7 +43,7 @@ import Box from "@/Components/UI/Box.vue";
 import {useForm} from "@inertiajs/vue3";
 import {computed} from "vue";
 import NProgress from 'nprogress'
-import { Inertia } from '@inertiajs/inertia'
+import { Link, Inertia } from '@inertiajs/inertia'
 
 const props = defineProps({
     listing: Object
@@ -41,6 +54,8 @@ Inertia.on('progress', (event) => {
         NProgress.set((event.detail.progress.percentage / 100) * 0.9)
     }
 })
+
+const uploadErrors = computed( () => Object.values(form.errors));
 
 const form = useForm({
    images: []

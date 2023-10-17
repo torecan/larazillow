@@ -46,6 +46,7 @@ class ListingController extends Controller
      */
     public function show(Listing $listing)
     {
+        $listing->load('images');
 
 //        if( !Auth::user()->can('view', $listing)) {
 //            abort(403);
