@@ -38,6 +38,10 @@ Route::get('login', [AuthController::class, 'create'])->name('login');
 Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 
+Route::resource('listing.offer', \App\Http\Controllers\ListingOfferController::class)
+    ->middleware('auth')
+    ->only(['store']);
+
 Route::prefix('realtor')
     ->name('realtor.')
     ->middleware('auth')
