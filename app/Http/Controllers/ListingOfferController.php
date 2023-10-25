@@ -36,7 +36,7 @@ class ListingOfferController extends Controller
         );
 
         return redirect()->back()->with(
-            "success", 'Offer was made'
+            "success", 'Offer was made successfully'
         );
     }
 }
