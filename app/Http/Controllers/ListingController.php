@@ -48,6 +48,11 @@ class ListingController extends Controller
     {
         $listing->load('images');
 
+        $offer = Auth::user() ? $listing->offers()
+            ->byMe()
+            ->first() : null;
+
+
 //        if( !Auth::user()->can('view', $listing)) {
 //            abort(403);
 //        }
@@ -57,7 +62,8 @@ class ListingController extends Controller
         return inertia(
             'Listing/Show',
             [
-                'listing' => $listing
+                'listing' => $listing,
+                'offerMade' => $offer
             ]
         );
     }
