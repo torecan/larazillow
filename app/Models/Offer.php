@@ -12,7 +12,7 @@ class Offer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount'];
+    protected $fillable = ['amount', 'rejected_at', 'accepted_at'];
     public function bidder() : BelongsTo {
 
         return $this->belongsTo(
@@ -33,6 +33,11 @@ class Offer extends Model
             "bidder_id", Auth::user()?->id
         );
 
+    }
+
+    public function scopeExcept(Builder $query, Offer $offer): Builder
+    {
+        return $query->where('id', '!=', $offer->id);
     }
 
 }

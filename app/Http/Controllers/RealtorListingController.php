@@ -30,7 +30,7 @@ class RealtorListingController extends Controller
                     ->listings()
                     ->filters($filters)
                     ->withCount('images')
-                    ->withCount('owner')
+                    ->withCount('offers')
                     ->paginate(5)
                     ->withQueryString()
             ]);
@@ -42,6 +42,19 @@ class RealtorListingController extends Controller
     public function create()
     {
         return inertia('Realtor/Create');
+    }
+
+
+    public function show(Listing $listing) {
+        return inertia(
+            'Realtor/Show',
+            [
+                "listing" => $listing->load(
+                    'offers',
+                    'offers.bidder'
+                )
+            ]
+        );
     }
 
 
