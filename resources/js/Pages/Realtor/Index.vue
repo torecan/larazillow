@@ -26,7 +26,7 @@
                         >
                             Edit
                         </Link>
-sss
+
                         <Link
                             v-if="!listing.deleted_at"
                             class="btn-outline text-xs font-medium"
