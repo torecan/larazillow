@@ -31,7 +31,11 @@ class ListingPolicy
      */
     public function view(?User $user, Listing $listing): bool
     {
-        return true;
+        if($user?->id === $listing->by_user_id) {
+            return true;
+        }
+
+        return $listing->sold_at === null;
     }
 
     /**
@@ -47,8 +51,9 @@ class ListingPolicy
      */
     public function update(User $user, Listing $listing): bool
     {
-        return $user?->id === $listing->by_user_id;
-    }
+
+        return $listing->sold_at === null
+            && ($user->id === $listing->by_user_id);    }
 
     /**
      * Determine whether the user can delete the model.

@@ -17,6 +17,7 @@ class Offer extends Model
 
         return $this->belongsTo(
            User::class,
+            'bidder_id'
         );
     }
 
@@ -24,7 +25,7 @@ class Offer extends Model
 
         return $this->belongsTo(
             Listing::class,
-            'by_listing_id'
+            'listing_id'
         );
 
     }
