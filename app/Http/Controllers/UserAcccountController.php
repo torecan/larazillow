@@ -13,7 +13,7 @@ class UserAcccountController extends Controller
      */
     public function index()
     {
-        // no need
+        // no needs
     }
 
     /**
