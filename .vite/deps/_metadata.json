@@ -1,0 +1,35 @@
+{
+  "hash": "deb3ecdc",
+  "browserHash": "b3df4656",
+  "optimized": {
+    "vue": {
+      "src": "../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "d203ea87",
+      "needsInterop": false
+    },
+    "@inertiajs/vue3": {
+      "src": "../../node_modules/@inertiajs/vue3/dist/index.esm.js",
+      "file": "@inertiajs_vue3.js",
+      "fileHash": "49c2b273",
+      "needsInterop": false
+    },
+    "@inertiajs/progress": {
+      "src": "../../node_modules/@inertiajs/progress/dist/index.js",
+      "file": "@inertiajs_progress.js",
+      "fileHash": "238ee1bd",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-QNGQRF5U": {
+      "file": "chunk-QNGQRF5U.js"
+    },
+    "chunk-AXSH7MDO": {
+      "file": "chunk-AXSH7MDO.js"
+    },
+    "chunk-UXIASGQL": {
+      "file": "chunk-UXIASGQL.js"
+    }
+  }
+}

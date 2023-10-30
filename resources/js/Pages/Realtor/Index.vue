@@ -7,6 +7,9 @@
         >
             <div class="flex flex-col md:flex-row gap-2 md:items-center justify-between">
                 <div :class="{'opacity-25': listing.deleted_at}">
+                    <div v-if="listing.sold_at" class="text-xs font-bold uppercase border border-dashed p-1 border-green-300 text-green-500 inline-block rounded-md mb-2">
+                        SOLD
+                    </div>
                     <div class="xl:flex items-center gap-2">
                         <Price :price="listing.price" class="text-2xl font-medium"/>
                         <ListingSpace :listing="listing"/>

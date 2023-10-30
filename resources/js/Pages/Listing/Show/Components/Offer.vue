@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div
-                v-if="notSold">
+                v-if="soldAt">
                 <Link
                     class="btn-outline text-xs font-medium"
                     :href="route('realtor.offer.accept',{ offer: offer.id})"
@@ -46,12 +46,10 @@ import { Link } from "@inertiajs/vue3";
 
 const props = defineProps({
     offer: Object,
-    listingPrice: Number
+    listingPrice: Number,
+    soldAt: Boolean,
 })
 
-const notSold = computed(
-    () => !props.offer.accepted_at
-)
 
 const difference = computed(
     () => props.offer.amount - props.listingPrice
@@ -61,5 +59,6 @@ const difference = computed(
 const offerMadeDate = computed(
     () => new Date(props.offer.created_at).toDateString()
 )
+
 
 </script>
