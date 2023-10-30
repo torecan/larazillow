@@ -35,6 +35,7 @@ class Offer extends Model
 
     }
 
+
     public function scopeExcept(Builder $query, Offer $offer): Builder
     {
         return $query->where('id', '!=', $offer->id);
