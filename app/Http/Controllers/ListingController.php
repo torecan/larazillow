@@ -33,7 +33,7 @@ class ListingController extends Controller
 //                'listings' => Listing::all()
                 'listings' => Listing::mostRecent()
                     ->filters($filters)
-                    ->withoutOffer()
+                    ->withoutSold()
                     ->paginate(9)
                     ->withQueryString()
                 ,

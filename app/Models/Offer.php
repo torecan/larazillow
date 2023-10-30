@@ -21,10 +21,12 @@ class Offer extends Model
     }
 
     public function listing(): BelongsTo {
+
         return $this->belongsTo(
             Listing::class,
             'by_listing_id'
         );
+
     }
 
     public function scopeByMe(Builder $query) :Builder {

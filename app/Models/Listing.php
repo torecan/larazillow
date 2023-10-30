@@ -44,16 +44,18 @@ class Listing extends Model
     }
 
 
-    public function scopeWithoutOffer(Builder $query) :Builder {
+    public function scopeWithoutSold(Builder $query) :Builder {
 
-        return $query->doesntHave('offers')
-            ->orWhereHas(
-                'offers',
-                fn(Builder $query) =>
-                $query
-                    ->whereNull('accepted_at')
-            );
 
+//        return $query->doesntHave('offers')
+//            ->orWhereHas(
+//                'offers',
+//                fn(Builder $query) =>
+//                $query
+//                    ->whereNull('accepted_at')
+//            );
+
+        return $query->whereNull('sold_at');
     }
 
     public function scopeFilters(Builder $query, array $filters) :Builder {
