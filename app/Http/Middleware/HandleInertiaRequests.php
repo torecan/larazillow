@@ -44,6 +44,8 @@ class HandleInertiaRequests extends Middleware
                 "name" =>$request->user()->name,
                 "id" =>$request->user()->id,
                 "mail" =>$request->user()->mail,
+//                "notificationCount" => $request->user()->email
+                "notificationCount" => $request->user()->unreadNotifications()->count()
             ] : null
         ]);
     }
