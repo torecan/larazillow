@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div
-                v-if="soldAt">
+                v-if="!isSold">
                 <Link
                     class="btn-outline text-xs font-medium"
                     :href="route('realtor.offer.accept',{ offer: offer.id})"
@@ -47,7 +47,7 @@ import { Link } from "@inertiajs/vue3";
 const props = defineProps({
     offer: Object,
     listingPrice: Number,
-    soldAt: Boolean,
+    isSold: Boolean,
 })
 
 

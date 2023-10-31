@@ -6,6 +6,7 @@ use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\ListingController;
 use \App\Http\Controllers\UserAcccountController;
 use \App\Http\Controllers\RealtorListingImageController;
+use Illuminate\Notifications\Events\NotificationSent;
 
 
 /*
@@ -41,6 +42,15 @@ Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 Route::resource('listing.offer', \App\Http\Controllers\ListingOfferController::class)
     ->middleware('auth')
     ->only(['store']);
+
+
+Route::resource('notification', \App\Http\Controllers\NotificationContoller::class)
+    ->middleware('auth')
+    ->only('index');
+
+Route::name('notification.seen')
+    ->put('notification/{notification}/seen', \App\Http\Controllers\NotificationSeenContoller::class)
+    ->middleware('auth');
 
 Route::prefix('realtor')
     ->name('realtor.')

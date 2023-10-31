@@ -1,13 +1,16 @@
 <template>
     <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 md:grid md:grid-cols-12 gap-4">
-        <Box class="md:col-span-7 flex w-full">
-            <div v-if="listing.images.length" class="grid grid-cols-2 gap-2">
+
+        <Box v-if="listing.images.length" class="md:col-span-7 ">
+            <div  class="grid grid-cols-2 gap-2">
                <img v-for="image in listing.images"
                    :src="image.src"
-                   :key = "image.id">
+                :key = "image.id">
             </div>
-            <div v-else class="w-full items-center text-center font-medium text-gray-500">No Image</div>
         </Box>
+
+        <EmptyState v-else class="md:col-span-7 flex items-center">No images</EmptyState>
+
         <div class="md:col-span-5  gap-4">
             <Box class="mb-2">
                 <template #header>
@@ -81,6 +84,7 @@ import {computed, ref} from "vue";
 import MakeOffer from "./Show/Components/MakeOffer.vue";
 import OfferMade from "./Show/Components/OfferMade.vue";
 import {usePage} from "@inertiajs/vue3";
+import EmptyState from "../../Components/UI/EmptyState.vue";
 
 const interestRate = ref(2.5)
 const duration = ref(25)
